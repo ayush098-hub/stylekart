@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway-cont
+        image: api-gateway-service:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Never
+        env:
+        - name: USER_SERVICE_URI
+          value: http://user-service:8081
+        - name: PRODUCT_SERVICE_URI
+          value: http://product-service:8082
+        - name: ORDER_SERVICE_URI
+          value: http://order-service:8083
+        - name: PAYMENT_SERVICE_URI
+          value: http://payment-service:8084
+        - name: CORS_ALLOWED_ORIGIN
+          value: http://192.168.49.2:30082
