@@ -11,4 +11,5 @@ override.tf.json
 # Terraform lock (optional keep/remove)
 .terraform.lock.hcl
 .terraform/
+notrequired/
 node_modules/
