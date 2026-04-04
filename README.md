@@ -6,6 +6,7 @@
 ## 🏗️ Application Architecture
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/388bb6f8-02d7-4c15-b1b1-3f15b32619e3" />
+
 ```
 Internet
     │
