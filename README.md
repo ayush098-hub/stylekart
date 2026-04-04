@@ -3,28 +3,9 @@
 > A production-grade fashion e-commerce platform built to demonstrate end-to-end DevOps competency targeting a 2–3 years experience profile.
 
 ---
-
-## 🧩 Application Overview
-
-StyleKart is a microservices-based fashion e-commerce application with the following services:
-
-| Service | Language | Port | Description |
-|---|---|---|---|
-| User Service | Java (Spring Boot) | 8081 | Registration, login, JWT auth |
-| Product Service | Java (Spring Boot) | 8082 | Product and category management |
-| Order Service | Java (Spring Boot) | 8083 | Order placement and tracking |
-| Payment Service | Java (Spring Boot) | 8084 | Payment processing |
-| API Gateway | Java (Spring Boot) | 8080 | Single entry point, request routing |
-| Frontend | React + Tailwind CSS | 80 | Customer-facing UI |
-| PostgreSQL | Docker Official Image | 5432 | Shared database (per-service schemas) |
-
----
-
-## 🏗️ Architecture
+## 🏗️ Application Architecture
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/388bb6f8-02d7-4c15-b1b1-3f15b32619e3" />
-
-
 ```
 Internet
     │
@@ -41,6 +22,22 @@ AWS ALB (Elastic Load Balancer)
 
 All services → PostgreSQL (StatefulSet + EBS CSI)
 ```
+---
+
+## 🧩 Application Overview
+
+StyleKart is a microservices-based fashion e-commerce application with the following services:
+
+| Service | Language | Port | Description |
+|---|---|---|---|
+| User Service | Java (Spring Boot) | 8081 | Registration, login, JWT auth |
+| Product Service | Java (Spring Boot) | 8082 | Product and category management |
+| Order Service | Java (Spring Boot) | 8083 | Order placement and tracking |
+| Payment Service | Java (Spring Boot) | 8084 | Payment processing |
+| API Gateway | Java (Spring Boot) | 8080 | Single entry point, request routing |
+| Frontend | React + Tailwind CSS | 80 | Customer-facing UI |
+| PostgreSQL | Docker Official Image | 5432 | Shared database (per-service schemas) |
+
 ---
 
 ## 🛠️ Tech Stack
