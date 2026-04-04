@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+      - name: product-cont
+        image: 397920213006.dkr.ecr.ap-south-1.amazonaws.com/product-service:24
+        ports:
+        - containerPort: 8082
+        env:
+          - name: DB_HOST
+            value: stylekart-db-svc

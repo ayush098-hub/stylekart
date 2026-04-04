@@ -26,6 +26,19 @@ resource "aws_iam_role_policy" "eks_access" {
   })
 }
 
+resource "aws_iam_role_policy" "s3_access" {
+  name = "s3-access"
+  role = aws_iam_role.ec2_ssm_role.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect   = "Allow"
+      Action   = ["s3:GetObject"]
+      Resource = "arn:aws:s3:::my-s3-bucket-9021484353/*"
+    }]
+  })
+}
+
 # Needed for SSM session (no SSH required)
 resource "aws_iam_role_policy_attachment" "ssm_core" {
   role       = aws_iam_role.ec2_ssm_role.name
@@ -112,6 +125,18 @@ resource "aws_security_group_rule" "allow_ec2_to_eks" {
   type                     = "ingress"
   from_port                = 443
   to_port                  = 443
+  protocol                 = "tcp"
+
+  security_group_id        = module.eks.cluster_security_group_id
+  source_security_group_id = aws_security_group.private_ec2_sg.id
+
+  depends_on = [ module.eks ]
+} 
+
+resource "aws_security_group_rule" "allow_ec2_to_node" {
+  type                     = "ingress"
+  from_port                = 31080
+  to_port                  = 31080
   protocol                 = "tcp"
 
   security_group_id        = module.eks.cluster_security_group_id

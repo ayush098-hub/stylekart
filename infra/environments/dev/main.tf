@@ -31,3 +31,21 @@ module "eks" {
   
   }
 }
+
+module "irsa_ebs_csi" {
+  source = "../../modules/irsa"
+  role_name = "${module.eks.cluster_name}-ebs-csi-driver-role"
+  service_account_name = "ebs-csi-controller-sa"
+  oidc_provider_url = module.eks.oidc_provider_url
+  oidc_provider_arn = module.eks.oidc_provider_arn
+  policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
+}
+
+module "irsa_alb_controller" {
+  source               = "../../modules/irsa"
+  role_name            = "stylekart-alb-controller-role"
+  service_account_name = "aws-load-balancer-controller"
+  oidc_provider_url    = module.eks.oidc_provider_url
+  oidc_provider_arn    = module.eks.oidc_provider_arn
+  policy_arns          = ["arn:aws:iam::397920213006:policy/AWSLoadBalancerControllerIAMPolicy"]
+}

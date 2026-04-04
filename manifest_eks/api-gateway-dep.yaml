@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway-cont
+        image: 397920213006.dkr.ecr.ap-south-1.amazonaws.com/api-gateway-service:21
+        ports:
+        - containerPort: 8080
+        env:
+        - name: USER_SERVICE_URI
+          value: http://user-service:8081
+        - name: PRODUCT_SERVICE_URI
+          value: http://product-service:8082
+        - name: ORDER_SERVICE_URI
+          value: http://order-service:8083
+        - name: PAYMENT_SERVICE_URI
+          value: http://payment-service:8084
+        - name: CORS_ALLOWED_ORIGIN
+          value: http://k8s-default-stylekar-4aa298fc3a-60568287.ap-south-1.elb.amazonaws.com

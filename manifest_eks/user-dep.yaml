@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      labels:
+        app: user
+    spec:
+      containers:
+      - name: user-cont
+        image: 397920213006.dkr.ecr.ap-south-1.amazonaws.com/user-service:20
+        ports:
+        - containerPort: 8081
+        env:
+          - name: DB_HOST
+            value: stylekart-db-svc

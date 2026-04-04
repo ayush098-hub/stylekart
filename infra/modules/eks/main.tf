@@ -99,3 +99,5 @@ resource "aws_eks_node_group" "worker-nodes" {
     aws_iam_role_policy_attachment.ecr
   ]
 }
+
+data "aws_caller_identity" "current" {}

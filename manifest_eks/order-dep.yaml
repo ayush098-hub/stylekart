@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+      - name: order-cont
+        image: 397920213006.dkr.ecr.ap-south-1.amazonaws.com/order-service:22
+        ports:
+        - containerPort: 8083
+        env:
+          - name: DB_HOST
+            value: stylekart-db-svc
