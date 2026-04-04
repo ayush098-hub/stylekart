@@ -22,6 +22,9 @@ StyleKart is a microservices-based fashion e-commerce application with the follo
 
 ## 🏗️ Architecture
 
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/388bb6f8-02d7-4c15-b1b1-3f15b32619e3" />
+
+
 ```
 Internet
     │
@@ -38,8 +41,6 @@ AWS ALB (Elastic Load Balancer)
 
 All services → PostgreSQL (StatefulSet + EBS CSI)
 ```
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/c10b279d-e707-41b6-bea0-89bca3c71004" />
-
 ---
 
 ## 🛠️ Tech Stack
