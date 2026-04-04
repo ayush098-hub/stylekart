@@ -1,6 +1,6 @@
-# StyleKart — Enterprise DevOps Portfolio Project
+# StyleKart Project
 
-> A production-grade fashion e-commerce platform built to demonstrate end-to-end DevOps competency targeting a 2–3 years experience profile.
+> A production-grade fashion e-commerce platform deployed on EKS.
 
 ---
 ## 🏗️ Application Architecture
