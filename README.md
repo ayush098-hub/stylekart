@@ -38,6 +38,7 @@ AWS ALB (Elastic Load Balancer)
 
 All services → PostgreSQL (StatefulSet + EBS CSI)
 ```
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/c10b279d-e707-41b6-bea0-89bca3c71004" />
 
 ---
 
