@@ -22,7 +22,12 @@ module "eks" {
   subnet_ids = module.vpc.private_subnets
   aws_ecr_repository_names = {
   user  = "user-service"
-  order = "order-service"  
+  order = "order-service"
+  payment = "payment-service"
+  product = "product-service"
+  apigateway = "api-gateway-service"
+  db = "db-service"
+  frotnend = "frontend-service"  
   
   }
 }
